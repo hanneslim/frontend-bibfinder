@@ -1,0 +1,30 @@
+.bib-list-box {
+  height: 5rem;
+  margin: 0.5rem;
+  border: 1px solid #e4e4e4;
+  border-radius: 0.4rem;
+  padding: 1rem;
+}
+
+.list-text {
+  display: flex;
+  justify-content: space-between;
+}
+
+.library-name {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.container {
+  margin-top: 0.6rem;
+  height: 1rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.dynamic-bar {
+  border-radius: 0.25rem;
+  height: 1rem;
+}

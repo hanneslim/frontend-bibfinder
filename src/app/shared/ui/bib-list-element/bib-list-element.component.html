@@ -1,0 +1,20 @@
+<div class="bib-list-box">
+  <div class="list-text">
+    <div class="library-name">{{ bibData.name }}</div>
+    <div class="occupation">
+      <ng-container *ngIf="bibData.status === 'open'"
+        ><p class="inline font-semibold">{{ percentage }}</p>
+        occupied</ng-container
+      >
+      <ng-container *ngIf="bibData.status === 'closed'"
+        ><p class="inline font-semibold">closed</p></ng-container
+      >
+    </div>
+  </div>
+  <div class="container">
+    <div
+      [ngStyle]="{ width: percentage, 'background-color': color }"
+      class="dynamic-bar"
+    ></div>
+  </div>
+</div>

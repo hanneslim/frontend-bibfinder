@@ -1,1 +1,5 @@
-<p>list works!</p>
+<div *ngIf="bibData$ | async as bibData">
+  <div *ngFor="let bib of bibData">
+    <app-bib-list-element [bibData]="bib"></app-bib-list-element>
+  </div>
+</div>

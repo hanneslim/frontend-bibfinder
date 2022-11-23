@@ -8,6 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ListComponent } from './pages/list/list.component';
 import { MapComponent } from './pages/map/map.component';
+import { BibListElementComponent } from './shared/ui/bib-list-element/bib-list-element.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MapComponent } from './pages/map/map.component';
     FooterComponent,
     ListComponent,
     MapComponent,
+    BibListElementComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
