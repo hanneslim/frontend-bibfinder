@@ -9,7 +9,18 @@
   src: url(assets/fonts/Helvetica.ttf) format("truetype");
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
 body {
   font-family: Helvetica;
   margin: 0;
+  margin-bottom: 12rem;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
 }
