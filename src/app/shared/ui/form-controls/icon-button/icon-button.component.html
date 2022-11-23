@@ -1,0 +1,7 @@
+<p-button
+  [disabled]="isDisabled()"
+  (onClick)="clickEvent.emit($event)"
+  [icon]="icon"
+>
+  <ng-content></ng-content>
+</p-button>

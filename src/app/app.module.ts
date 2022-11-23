@@ -9,6 +9,9 @@ import { HeaderComponent } from './header/header.component';
 import { ListComponent } from './pages/list/list.component';
 import { MapComponent } from './pages/map/map.component';
 import { BibListElementComponent } from './shared/ui/bib-list-element/bib-list-element.component';
+import { BibListHeaderComponent } from './shared/ui/bib-list-header/bib-list-header.component';
+import { IconButtonComponent } from './shared/ui/form-controls/icon-button/icon-button.component';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -17,9 +20,11 @@ import { BibListElementComponent } from './shared/ui/bib-list-element/bib-list-e
     FooterComponent,
     ListComponent,
     MapComponent,
+    IconButtonComponent,
     BibListElementComponent,
+    BibListHeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ButtonModule],
   providers: [],
   bootstrap: [AppComponent],
 })
