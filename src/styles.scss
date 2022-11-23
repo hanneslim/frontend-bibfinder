@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./../node_modules/primeng/resources/themes/saga-blue/theme.css";
+@import "./../node_modules/primeflex/primeflex";
+@import "./../node_modules/primeng/resources/primeng.min.css";
+@import "./../node_modules/primeicons/primeicons.css";
+
+@font-face {
+  font-family: Helvetica;
+  src: url(assets/fonts/Helvetica.ttf) format("truetype");
+}
+
+body {
+  font-family: Helvetica;
+  margin: 0;
+}
