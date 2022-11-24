@@ -1,15 +1,25 @@
 .header-container {
-  height: 4.5rem;
   margin: 0.25rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  height: 100%;
 }
 
 .header-line {
   margin: 0.5rem;
 }
 
+.header-icon {
+  margin: 0.5rem;
+  cursor: pointer;
+  font-size: x-large;
+}
+
 .header-text {
   margin: 0.5rem;
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
   padding-bottom: 0;
   font-weight: normal;
   font-size: xx-large;

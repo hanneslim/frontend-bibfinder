@@ -13,14 +13,19 @@ import { BibData } from 'src/app/shared/ui/bib-list-element/bib-list-element.com
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent extends Destroyable implements OnInit {
-  public bibData$: Observable<BibData[]> = of([]);
+  public tumData$: Observable<BibData[]> = of([]);
+  public lmuData$: Observable<BibData[]> = of([]);
   constructor(private _bibDataService: BibDataService) {
     super();
   }
 
   ngOnInit(): void {
-    this.bibData$ = this._bibDataService
+    this.tumData$ = this._bibDataService
       .getTumData()
+      .pipe(takeUntil(this._destroy));
+
+    this.lmuData$ = this._bibDataService
+      .getLmuData()
       .pipe(takeUntil(this._destroy));
   }
 }

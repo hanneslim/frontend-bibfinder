@@ -7,4 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class BibListHeaderComponent {
   @Input() headerText!: string;
+
+  public showContent = true;
+
+  public contentSwitch() {
+    this.showContent = !this.showContent;
+  }
 }

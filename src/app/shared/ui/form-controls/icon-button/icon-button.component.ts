@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-icon-button',
+  selector: 'app-icon-button[icon]',
   templateUrl: './icon-button.component.html',
   styleUrls: ['./icon-button.component.scss'],
 })
 export class IconButtonComponent {
-  @Input() form?: UntypedFormGroup | UntypedFormControl;
+  @Input() form?: FormGroup | FormControl;
   @Input() icon!: string;
   @Input() disabled = false;
 

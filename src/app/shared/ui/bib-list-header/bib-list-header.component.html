@@ -1,7 +1,18 @@
 <div class="header-container">
-  <div class="header-text">{{ headerText }}</div>
+  <div class="header-text">
+    {{ headerText }}
+    <i
+      *ngIf="showContent"
+      class="header-icon pi pi-chevron-up"
+      (click)="contentSwitch()"
+    ></i>
+    <i
+      *ngIf="!showContent"
+      class="header-icon pi pi-chevron-down"
+      (click)="contentSwitch()"
+    ></i>
+  </div>
 
   <hr class="header-line" />
-
-  <ng-content></ng-content>
+  <ng-content *ngIf="showContent"></ng-content>
 </div>
