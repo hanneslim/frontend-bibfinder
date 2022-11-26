@@ -1,0 +1,28 @@
+<div class="flex justify-content-end">
+  <div class="switch-container">
+    <div class="w-6 flex cursor-pointer justify-content-center">
+      <div
+        [ngClass]="{
+          'active-page': firstPageActive,
+          'inactive-page': !firstPageActive
+        }"
+        (click)="switchActive()"
+      >
+        List
+      </div>
+    </div>
+    <div class="w-6 flex cursor-pointer justify-content-center">
+      <div
+        [ngClass]="{
+          'active-page': !firstPageActive,
+          'inactive-page': firstPageActive
+        }"
+        (click)="switchActive()"
+      >
+        Map
+      </div>
+    </div>
+  </div>
+</div>
+<ng-content *ngIf="firstPageActive" select="[list]"></ng-content>
+<ng-content *ngIf="!firstPageActive" select="[map]"></ng-content>

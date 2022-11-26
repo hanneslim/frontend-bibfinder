@@ -12,6 +12,8 @@ import { BibListElementComponent } from './shared/ui/bib-list-element/bib-list-e
 import { BibListHeaderComponent } from './shared/ui/bib-list-header/bib-list-header.component';
 import { IconButtonComponent } from './shared/ui/form-controls/icon-button/icon-button.component';
 import { ButtonModule } from 'primeng/button';
+import { ListMapSwitchComponent } from './shared/ui/list-map-switch/list-map-switch.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ButtonModule } from 'primeng/button';
     IconButtonComponent,
     BibListElementComponent,
     BibListHeaderComponent,
+    ListMapSwitchComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,
