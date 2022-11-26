@@ -3,8 +3,7 @@
     <div class="w-6 flex cursor-pointer justify-content-center">
       <div
         [ngClass]="{
-          'active-page': firstPageActive,
-          'inactive-page': !firstPageActive
+          'active-page': firstPageActive
         }"
         (click)="switchActive()"
       >
@@ -14,8 +13,7 @@
     <div class="w-6 flex cursor-pointer justify-content-center">
       <div
         [ngClass]="{
-          'active-page': !firstPageActive,
-          'inactive-page': firstPageActive
+          'active-page': !firstPageActive
         }"
         (click)="switchActive()"
       >

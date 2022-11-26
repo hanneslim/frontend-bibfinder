@@ -1,0 +1,32 @@
+<div class="switch-container flex">
+  <div class="w-6 flex cursor-pointer justify-content-center">
+    <div
+      [ngClass]="{
+        'active-page': englishActive
+      }"
+      (click)="switchLanguages()"
+    >
+      <img
+        [ngClass]="{ 'inactive-icon-adjustment': !englishActive }"
+        style="height: 14px; vertical-align: middle"
+        src="../../../../assets/english-flag.svg"
+      />
+      EN
+    </div>
+  </div>
+  <div class="w-6 flex cursor-pointer justify-content-center">
+    <div
+      [ngClass]="{
+        'active-page': !englishActive
+      }"
+      (click)="switchLanguages()"
+    >
+      <img
+        [ngClass]="{ 'inactive-icon-adjustment': englishActive }"
+        style="height: 14px; vertical-align: middle"
+        src="../../../../assets/german-flag.png"
+      />
+      DE
+    </div>
+  </div>
+</div>

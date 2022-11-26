@@ -14,6 +14,7 @@ import { IconButtonComponent } from './shared/ui/form-controls/icon-button/icon-
 import { ButtonModule } from 'primeng/button';
 import { ListMapSwitchComponent } from './shared/ui/list-map-switch/list-map-switch.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { LanguageSwitchComponent } from './shared/ui/language-switch/language-switch.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     BibListHeaderComponent,
     ListMapSwitchComponent,
     MainPageComponent,
+    LanguageSwitchComponent,
   ],
   imports: [
     BrowserModule,
