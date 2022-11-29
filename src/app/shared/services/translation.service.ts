@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { clientTranslations } from '../translations';
 
-type TranslationKey = keyof typeof clientTranslations;
+export type TranslationKey = keyof typeof clientTranslations;
 type ApplicationLanguage = 'eng' | 'ger';
 
 @Injectable({

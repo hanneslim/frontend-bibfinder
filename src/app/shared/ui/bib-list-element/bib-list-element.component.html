@@ -4,10 +4,12 @@
     <div class="occupation">
       <ng-container *ngIf="bibData.status === 'open'"
         ><p class="inline font-semibold">{{ percentage }}</p>
-        occupied</ng-container
+        {{ "occupied" | translation }}</ng-container
       >
       <ng-container *ngIf="bibData.status === 'closed'"
-        ><p class="inline font-semibold">closed</p></ng-container
+        ><p class="inline font-semibold">
+          {{ "closed" | translation }}
+        </p></ng-container
       >
     </div>
   </div>

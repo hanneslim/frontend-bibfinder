@@ -1,11 +1,11 @@
 export const clientTranslations = {
   list: {
     ger: 'Liste',
-    eng: 'list',
+    eng: 'List',
   },
   map: {
     ger: 'Karte',
-    eng: 'map',
+    eng: 'Map',
   },
   closed: {
     ger: 'geschlossen',

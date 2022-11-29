@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { ListMapSwitchComponent } from './shared/ui/list-map-switch/list-map-switch.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LanguageSwitchComponent } from './shared/ui/language-switch/language-switch.component';
+import { TranslationPipe } from './shared/pipes/translation.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LanguageSwitchComponent } from './shared/ui/language-switch/language-sw
     ListMapSwitchComponent,
     MainPageComponent,
     LanguageSwitchComponent,
+    TranslationPipe,
   ],
   imports: [
     BrowserModule,
