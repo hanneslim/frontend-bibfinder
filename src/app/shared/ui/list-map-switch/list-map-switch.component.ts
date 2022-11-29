@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-map-switch',
   templateUrl: './list-map-switch.component.html',
   styleUrls: ['./list-map-switch.component.scss'],
 })
-export class ListMapSwitchComponent {
+export class ListMapSwitchComponent implements AfterViewInit {
   @Input() firstPageActive = false;
 
   public switchActive() {
@@ -13,6 +13,6 @@ export class ListMapSwitchComponent {
   }
 
   public ngAfterViewInit() {
-    this.firstPageActive = true;
+    setTimeout(() => (this.firstPageActive = true));
   }
 }
