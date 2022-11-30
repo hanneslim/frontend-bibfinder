@@ -1,4 +1,6 @@
 <app-list-map-switch>
-  <div list><app-list></app-list></div>
-  <div map><app-map></app-map></div>
+  <div list>
+    <app-list [tumData$]="tumData$" [lmuData$]="lmuData$"></app-list>
+  </div>
+  <div map><app-map [tumData$]="tumData$" [lmuData$]="lmuData$"></app-map></div>
 </app-list-map-switch>

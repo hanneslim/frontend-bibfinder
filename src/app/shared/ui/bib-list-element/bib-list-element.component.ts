@@ -3,7 +3,11 @@ import { Component, Input } from '@angular/core';
 export type BibData = {
   name: string;
   status: string;
-  occupationPercentage: number | string;
+  occupationPercentage: string | number;
+  university: string;
+  innerCity: boolean;
+  lat: number;
+  lng: number;
 };
 
 @Component({

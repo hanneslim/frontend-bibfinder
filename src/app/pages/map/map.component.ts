@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   EventEmitter,
+  Input,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -14,13 +15,19 @@ import {
   tileLayer,
   ZoomAnimEvent,
 } from 'leaflet';
+import { BehaviorSubject } from 'rxjs';
+import { Destroyable } from 'src/app/shared/classes/destroyable';
+import { BibData } from 'src/app/shared/ui/bib-list-element/bib-list-element.component';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements AfterViewInit, OnDestroy {
+export class MapComponent extends Destroyable implements OnInit, OnDestroy {
+  @Input() tumData$!: BehaviorSubject<BibData[]>;
+  @Input() lmuData$!: BehaviorSubject<BibData[]>;
+
   public map$: EventEmitter<Map> = new EventEmitter();
   public zoom$: EventEmitter<number> = new EventEmitter();
   public options: MapOptions = {
@@ -39,9 +46,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   public map?: Map;
   public zoom?: number;
 
-  constructor() {}
-
-  ngAfterViewInit() {
+  ngOnInit() {
     const redIcon = icon({
       iconUrl: '../../../assets/map-markers/library-marker-red.svg',
       shadowUrl: '../../../assets/markers_shadow.png',
@@ -73,11 +78,25 @@ export class MapComponent implements AfterViewInit, OnDestroy {
       shadowAnchor: [10, 12],
       shadowSize: [36, 16],
     });
-    if (this.map) {
-      marker([48.15, 11.57], { icon: greenIcon })
-        .addTo(this.map)
-        .bindPopup('I am a green leaf.');
-    }
+    this.lmuData$.asObservable().subscribe((lmuData) =>
+      lmuData.forEach((lmuBib) => {
+        if (this.map) {
+          marker([lmuBib.lat, lmuBib.lng], { icon: greenIcon })
+            .addTo(this.map)
+            .bindPopup('I am a green leaf.');
+        }
+      })
+    );
+
+    this.tumData$.asObservable().subscribe((tumData) =>
+      tumData.forEach((tumBib) => {
+        if (this.map) {
+          marker([tumBib.lat, tumBib.lng], { icon: greenIcon })
+            .addTo(this.map)
+            .bindPopup('I am a green leaf.');
+        }
+      })
+    );
   }
 
   ngOnDestroy() {

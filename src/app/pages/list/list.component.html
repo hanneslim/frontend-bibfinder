@@ -1,11 +1,11 @@
 <div>
-  <app-bib-list-header *ngIf="lmuData$ | async as bibData" [headerText]="'LMU'">
-    <div *ngFor="let bib of bibData">
+  <app-bib-list-header [headerText]="'LMU'">
+    <div *ngFor="let bib of lmuData$.value">
       <app-bib-list-element [bibData]="bib"></app-bib-list-element>
     </div>
   </app-bib-list-header>
-  <app-bib-list-header *ngIf="tumData$ | async as bibData" [headerText]="'TUM'">
-    <div *ngFor="let bib of bibData">
+  <app-bib-list-header [headerText]="'TUM'">
+    <div *ngFor="let bib of tumData$.value">
       <app-bib-list-element [bibData]="bib"></app-bib-list-element>
     </div>
   </app-bib-list-header>
