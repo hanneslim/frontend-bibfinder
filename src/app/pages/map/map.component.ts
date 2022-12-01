@@ -18,6 +18,10 @@ import {
 } from 'leaflet';
 import { BehaviorSubject } from 'rxjs';
 import { Destroyable } from 'src/app/shared/classes/destroyable';
+import {
+  TranslationKey,
+  TranslationService,
+} from 'src/app/shared/services/translation.service';
 import { BibData } from 'src/app/shared/ui/bib-list-element/bib-list-element.component';
 
 @Component({
@@ -48,12 +52,18 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
   public zoom?: number;
 
   ngOnInit() {
-    const popUp = popup().setContent(
-      '<div style="background-color:red">Hey!</div>'
-    );
-
     this.lmuData$.asObservable().subscribe((lmuData) =>
       lmuData.forEach((lmuBib) => {
+        const popUp = popup().setContent(
+          '<div style="width: 16rem; display: block"><div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: -0.5rem;margin-top: -0.5rem;"><h3 style="width: 13rem;">' +
+            lmuBib.name +
+            ' </h3><a href="https://google.com" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="display: flex; gap: 0.25rem"><div style="color:' +
+            lmuBib.color +
+            '">' +
+            TranslationService.get(lmuBib.status as TranslationKey) +
+            '</div> <div>-</div> <div>Arcisstraße 4</div> </div> </div>'
+        );
+
         if (this.map) {
           marker([lmuBib.lat, lmuBib.lng], {
             icon: this.applyIcon(lmuBib.status, lmuBib.color),

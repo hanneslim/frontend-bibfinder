@@ -7,9 +7,13 @@ export const clientTranslations = {
     ger: 'Karte',
     eng: 'Map',
   },
+  open: {
+    ger: 'Geöffnet',
+    eng: 'Open',
+  },
   closed: {
-    ger: 'geschlossen',
-    eng: 'closed',
+    ger: 'Geschlossen',
+    eng: 'Closed',
   },
   occupied: {
     ger: 'besetzt',
