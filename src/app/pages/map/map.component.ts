@@ -12,6 +12,7 @@ import {
   Map,
   MapOptions,
   marker,
+  popup,
   tileLayer,
   ZoomAnimEvent,
 } from 'leaflet';
@@ -47,43 +48,18 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
   public zoom?: number;
 
   ngOnInit() {
-    const redIcon = icon({
-      iconUrl: '../../../assets/map-markers/library-marker-red.svg',
-      shadowUrl: '../../../assets/markers_shadow.png',
+    const popUp = popup().setContent(
+      '<div style="background-color:red">Hey!</div>'
+    );
 
-      iconSize: [35, 45],
-      iconAnchor: [17, 42],
-      popupAnchor: [1, -32],
-      shadowAnchor: [10, 12],
-      shadowSize: [36, 16],
-    });
-
-    const orangeIcon = icon({
-      iconUrl: '../../../assets/map-markers/library-marker-orange.svg',
-      shadowUrl: '../../../assets/markers_shadow.png',
-
-      iconSize: [35, 45],
-      iconAnchor: [17, 42],
-      popupAnchor: [1, -32],
-      shadowAnchor: [10, 12],
-      shadowSize: [36, 16],
-    });
-    const greenIcon = icon({
-      iconUrl: '../../../assets/map-markers/library-marker-green.svg',
-      shadowUrl: '../../../assets/map-markers/markers_shadow.png',
-
-      iconSize: [35, 45],
-      iconAnchor: [17, 42],
-      popupAnchor: [1, -32],
-      shadowAnchor: [10, 12],
-      shadowSize: [36, 16],
-    });
     this.lmuData$.asObservable().subscribe((lmuData) =>
       lmuData.forEach((lmuBib) => {
         if (this.map) {
-          marker([lmuBib.lat, lmuBib.lng], { icon: greenIcon })
+          marker([lmuBib.lat, lmuBib.lng], {
+            icon: this.applyIcon(lmuBib.status, lmuBib.color),
+          })
             .addTo(this.map)
-            .bindPopup('I am a green leaf.');
+            .bindPopup(popUp);
         }
       })
     );
@@ -91,7 +67,9 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
     this.tumData$.asObservable().subscribe((tumData) =>
       tumData.forEach((tumBib) => {
         if (this.map) {
-          marker([tumBib.lat, tumBib.lng], { icon: greenIcon })
+          marker([tumBib.lat, tumBib.lng], {
+            icon: this.applyIcon(tumBib.status, tumBib.color),
+          })
             .addTo(this.map)
             .bindPopup('I am a green leaf.');
         }
@@ -116,5 +94,55 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
   onMapZoomEnd(e: ZoomAnimEvent) {
     this.zoom = e.target.getZoom();
     this.zoom$.emit(this.zoom);
+  }
+
+  applyIcon(status: string, color: string) {
+    let returnIcon = icon({
+      iconUrl: '../../../assets/map-markers/library-marker-grey.svg',
+      shadowUrl: '../../../assets/markers_shadow.png',
+
+      iconSize: [35, 45],
+      iconAnchor: [17, 42],
+      popupAnchor: [1, -32],
+      shadowAnchor: [10, 12],
+      shadowSize: [36, 16],
+    });
+    if (status === 'open') {
+      if (color === 'red') {
+        returnIcon = icon({
+          iconUrl: '../../../assets/map-markers/library-marker-red.svg',
+          shadowUrl: '../../../assets/map-markers/markers_shadow.png',
+
+          iconSize: [35, 45],
+          iconAnchor: [17, 42],
+          popupAnchor: [1, -32],
+          shadowAnchor: [10, 12],
+          shadowSize: [36, 16],
+        });
+      } else if (color === '#FF8402') {
+        returnIcon = icon({
+          iconUrl: '../../../assets/map-markers/library-marker-orange.svg',
+          shadowUrl: '../../../assets/map-markers/markers_shadow.png',
+
+          iconSize: [35, 45],
+          iconAnchor: [17, 42],
+          popupAnchor: [1, -32],
+          shadowAnchor: [10, 12],
+          shadowSize: [36, 16],
+        });
+      } else {
+        returnIcon = icon({
+          iconUrl: '../../../assets/map-markers/library-marker-green.svg',
+          shadowUrl: '../../../assets/map-markers/markers_shadow.png',
+
+          iconSize: [35, 45],
+          iconAnchor: [17, 42],
+          popupAnchor: [1, -32],
+          shadowAnchor: [10, 12],
+          shadowSize: [36, 16],
+        });
+      }
+    }
+    return returnIcon;
   }
 }

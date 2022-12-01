@@ -16,7 +16,7 @@ export const clientTranslations = {
     eng: 'occupied',
   },
   occupationRateInMap: {
-    ger: 'Auslastung aller Bibliotheken auf der Karte zusammengefasst',
-    eng: 'Occupation rate of all libraries shown in the map',
+    ger: 'Alle Bibliotheken auf einem Blick',
+    eng: 'Occupation rate of all libraries',
   },
 };
