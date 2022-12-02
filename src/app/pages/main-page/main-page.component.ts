@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Destroyable } from 'src/app/shared/classes/destroyable';
-import { BibDataService } from 'src/app/shared/services/bib-data.service';
-import { BibData } from 'src/app/shared/ui/bib-list-element/bib-list-element.component';
+import {
+  BibData,
+  BibDataService,
+} from 'src/app/shared/services/bib-data.service';
 
 @Component({
   selector: 'app-main-page',

@@ -1,7 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
-import { BibData } from '../ui/bib-list-element/bib-list-element.component';
+
+export type BibData = {
+  name: string;
+  color: string;
+  status: string;
+  street: string;
+  gmapslink: string;
+  occupationPercentage: string | number;
+  university: string;
+  innerCity: boolean;
+  lat: number;
+  lng: number;
+};
 
 @Injectable({
   providedIn: 'root',

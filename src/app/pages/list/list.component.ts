@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
-import { BibData } from 'src/app/shared/ui/bib-list-element/bib-list-element.component';
+import { BibData } from 'src/app/shared/services/bib-data.service';
 
 @Component({
   selector: 'app-list',

@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -18,11 +17,11 @@ import {
 } from 'leaflet';
 import { BehaviorSubject } from 'rxjs';
 import { Destroyable } from 'src/app/shared/classes/destroyable';
+import { BibData } from 'src/app/shared/services/bib-data.service';
 import {
   TranslationKey,
   TranslationService,
 } from 'src/app/shared/services/translation.service';
-import { BibData } from 'src/app/shared/ui/bib-list-element/bib-list-element.component';
 
 @Component({
   selector: 'app-map',
@@ -57,11 +56,13 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
         const popUp = popup().setContent(
           '<div style="width: 16rem; display: block"><div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: -0.5rem;margin-top: -0.5rem;"><h3 style="width: 13rem;">' +
             lmuBib.name +
-            ' </h3><a href="https://google.com" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="display: flex; gap: 0.25rem"><div style="color:' +
-            lmuBib.color +
-            '">' +
+            ' </h3><a href="' +
+            lmuBib.gmapslink +
+            '" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="display: flex; gap: 0.25rem"><div style="color:#1a73e8">' +
             TranslationService.get(lmuBib.status as TranslationKey) +
-            '</div> <div>-</div> <div>Arcisstraße 4</div> </div> </div>'
+            '</div> <div>-</div> <div>' +
+            lmuBib.street +
+            '</div> </div> </div>'
         );
 
         if (this.map) {
@@ -76,12 +77,23 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
 
     this.tumData$.asObservable().subscribe((tumData) =>
       tumData.forEach((tumBib) => {
+        const popUp = popup().setContent(
+          '<div style="width: 16rem; display: block"><div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: -0.5rem;margin-top: -0.5rem;"><h3 style="width: 13rem;">' +
+            tumBib.name +
+            ' </h3><a href="' +
+            tumBib.gmapslink +
+            '" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="display: flex; gap: 0.25rem"><div style="color:#1a73e8">' +
+            TranslationService.get(tumBib.status as TranslationKey) +
+            '</div> <div>-</div> <div>' +
+            tumBib.street +
+            '</div> </div> </div>'
+        );
         if (this.map) {
           marker([tumBib.lat, tumBib.lng], {
             icon: this.applyIcon(tumBib.status, tumBib.color),
           })
             .addTo(this.map)
-            .bindPopup('I am a green leaf.');
+            .bindPopup(popUp);
         }
       })
     );
@@ -109,7 +121,7 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
   applyIcon(status: string, color: string) {
     let returnIcon = icon({
       iconUrl: '../../../assets/map-markers/library-marker-grey.svg',
-      shadowUrl: '../../../assets/markers_shadow.png',
+      shadowUrl: '../../../assets/map-markers/markers_shadow.png',
 
       iconSize: [35, 45],
       iconAnchor: [17, 42],
