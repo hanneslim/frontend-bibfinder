@@ -66,7 +66,7 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
         );
 
         if (this.map) {
-          marker([lmuBib.lat, lmuBib.lng], {
+          marker([lmuBib.lat, lmuBib.lng + 0.0022], {
             icon: this.applyIcon(lmuBib.status, lmuBib.color),
           })
             .addTo(this.map)
@@ -89,7 +89,7 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
             '</div> </div> </div>'
         );
         if (this.map) {
-          marker([tumBib.lat, tumBib.lng], {
+          marker([tumBib.lat, tumBib.lng + 0.002], {
             icon: this.applyIcon(tumBib.status, tumBib.color),
           })
             .addTo(this.map)

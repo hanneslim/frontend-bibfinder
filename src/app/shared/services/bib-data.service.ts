@@ -22,10 +22,14 @@ export class BibDataService {
   constructor(private _http: HttpClient) {}
 
   public getTumData(): Observable<BibData[]> {
-    return this._http.get<BibData[]>('http://localhost:3000/tum-data');
+    return this._http.get<BibData[]>(
+      'https://cute-blazer-crow.cyclic.app/tum-data'
+    );
   }
 
   public getLmuData(): Observable<BibData[]> {
-    return this._http.get<BibData[]>('http://localhost:3000/lmu-data');
+    return this._http.get<BibData[]>(
+      'https://cute-blazer-crow.cyclic.app/lmu-data'
+    );
   }
 }

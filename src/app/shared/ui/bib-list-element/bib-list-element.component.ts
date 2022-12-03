@@ -1,15 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-export type BibData = {
-  name: string;
-  color: string;
-  status: string;
-  occupationPercentage: string | number;
-  university: string;
-  innerCity: boolean;
-  lat: number;
-  lng: number;
-};
+import { BibData } from '../../services/bib-data.service';
 
 @Component({
   selector: 'app-bib-list-element[bibData]',
