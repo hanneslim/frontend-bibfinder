@@ -28,7 +28,7 @@ import {
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent extends Destroyable implements OnInit, OnDestroy {
+export class MapComponent extends Destroyable implements OnInit {
   @Input() tumData$!: BehaviorSubject<BibData[]>;
   @Input() lmuData$!: BehaviorSubject<BibData[]>;
 
@@ -97,13 +97,6 @@ export class MapComponent extends Destroyable implements OnInit, OnDestroy {
         }
       })
     );
-  }
-
-  ngOnDestroy() {
-    if (this.map) {
-      this.map.clearAllEventListeners;
-      this.map.remove();
-    }
   }
 
   onMapReady(map: Map) {

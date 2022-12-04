@@ -16,6 +16,8 @@ import { ListMapSwitchComponent } from './shared/ui/list-map-switch/list-map-swi
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { LanguageSwitchComponent } from './shared/ui/language-switch/language-switch.component';
 import { TranslationPipe } from './shared/pipes/translation.pipe';
+import { ImpressumComponent } from './pages/mandatory/impressum/impressum.component';
+import { DatenschutzComponent } from './pages/mandatory/datenschutz/datenschutz.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { TranslationPipe } from './shared/pipes/translation.pipe';
     MainPageComponent,
     LanguageSwitchComponent,
     TranslationPipe,
+    ImpressumComponent,
+    DatenschutzComponent,
   ],
   imports: [
     BrowserModule,

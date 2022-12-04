@@ -1,9 +1,15 @@
 <div class="footer-bar">
   <div class="footer-text">
-    <div class="footer-logo">Bibfinder</div>
+    <div class="footer-logo">
+      <a style="color: #d9dbe1" [skipLocationChange]="true" routerLink="/"
+        >Bibfinder</a
+      >
+    </div>
     <div class="footer-links">
-      <a routerLink="/impressum"> <p style="color: #d9dbe1">Impressum</p></a>
-      <a routerLink="/datenschutz">
+      <a [skipLocationChange]="true" routerLink="/impressum">
+        <p style="color: #d9dbe1">Impressum</p></a
+      >
+      <a [skipLocationChange]="true" routerLink="/datenschutz">
         <p style="color: #d9dbe1">Datenschutz</p></a
       >
     </div>
