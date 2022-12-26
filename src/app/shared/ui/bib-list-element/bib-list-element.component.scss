@@ -30,3 +30,15 @@
   border-radius: 0.25rem;
   height: 1rem;
 }
+
+@media screen and (max-width: 1000px) {
+  .bib-list-box {
+    height: 7rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .list-text {
+    height: 2.8rem;
+  }
+}
