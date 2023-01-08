@@ -1,0 +1,44 @@
+<div class="filter">
+  <div class="flex">
+    <app-text-input [control]="filterForm.controls.searchText"></app-text-input>
+    <div>Clear</div>
+    <app-button [form]="filterForm" [label]="'Search'"></app-button>
+  </div>
+
+  <hr class="footer-line" />
+  <div class="flex">
+    <div>Filters:</div>
+    <app-checkbox
+      name="filterCheckBoxValues"
+      value="tum"
+      label="TUM"
+      [control]="filterForm.controls.checkBoxValues"
+    >
+    </app-checkbox>
+    <app-checkbox
+      name="filterCheckBoxValues"
+      value="lmu"
+      label="LMU"
+      [control]="filterForm.controls.checkBoxValues"
+    ></app-checkbox>
+    <app-checkbox
+      name="filterCheckBoxValues"
+      value="garching"
+      label="Garching"
+      [control]="filterForm.controls.checkBoxValues"
+    ></app-checkbox>
+    <app-checkbox
+      name="filterCheckBoxValues"
+      value="innenstadt"
+      label="Innenstadt"
+      [control]="filterForm.controls.checkBoxValues"
+    ></app-checkbox>
+    <app-checkbox
+      name="filterCheckBoxValues"
+      value="großhadern"
+      label="Großhadern"
+      [control]="filterForm.controls.checkBoxValues"
+    ></app-checkbox>
+    <div>Clear All</div>
+  </div>
+</div>

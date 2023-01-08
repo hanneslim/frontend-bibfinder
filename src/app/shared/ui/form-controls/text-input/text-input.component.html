@@ -1,0 +1,14 @@
+<div>
+  <label *ngIf="label">{{ label }}</label>
+
+  <span class="p-input-icon-left">
+    <i *ngIf="icon" class="{{ icon }}"></i>
+    <input
+      type="text"
+      pInputText
+      [disabled]="disabled"
+      [formControl]="control"
+      [placeholder]="placeholder"
+    />
+  </span>
+</div>

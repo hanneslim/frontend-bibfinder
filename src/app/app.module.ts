@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +21,10 @@ import { LanguageSwitchComponent } from './shared/ui/language-switch/language-sw
 import { TranslationPipe } from './shared/pipes/translation.pipe';
 import { ImpressumComponent } from './pages/mandatory/impressum/impressum.component';
 import { DatenschutzComponent } from './pages/mandatory/datenschutz/datenschutz.component';
+import { FilterComponent } from './shared/ui/filter/filter.component';
+import { TextInputComponent } from './shared/ui/form-controls/text-input/text-input.component';
+import { ButtonComponent } from './shared/ui/form-controls/button/button.component';
+import { CheckboxComponent } from './shared/ui/form-controls/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +42,10 @@ import { DatenschutzComponent } from './pages/mandatory/datenschutz/datenschutz.
     TranslationPipe,
     ImpressumComponent,
     DatenschutzComponent,
+    FilterComponent,
+    TextInputComponent,
+    ButtonComponent,
+    CheckboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +53,9 @@ import { DatenschutzComponent } from './pages/mandatory/datenschutz/datenschutz.
     HttpClientModule,
     ButtonModule,
     LeafletModule,
+    ReactiveFormsModule,
+    InputTextModule,
+    CheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
