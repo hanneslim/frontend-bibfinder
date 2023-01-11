@@ -1,21 +1,16 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import {
   icon,
   latLng,
   Map,
   MapOptions,
+  Marker,
   marker,
   popup,
   tileLayer,
   ZoomAnimEvent,
 } from 'leaflet';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Destroyable } from 'src/app/shared/classes/destroyable';
 import { BibData } from 'src/app/shared/services/bib-data.service';
 import {
@@ -29,8 +24,8 @@ import {
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent extends Destroyable implements OnInit {
-  @Input() tumData$!: BehaviorSubject<BibData[]>;
-  @Input() lmuData$!: BehaviorSubject<BibData[]>;
+  @Input() tumData$!: Observable<BibData[]>;
+  @Input() lmuData$!: Observable<BibData[]>;
 
   public map$: EventEmitter<Map> = new EventEmitter();
   public zoom$: EventEmitter<number> = new EventEmitter();
@@ -50,8 +45,12 @@ export class MapComponent extends Destroyable implements OnInit {
   public map?: Map;
   public zoom?: number;
 
+  private _lmuMapMarkers: Marker[] = [];
+  private _tumMapMarkers: Marker[] = [];
+
   ngOnInit() {
-    this.lmuData$.asObservable().subscribe((lmuData) =>
+    this.lmuData$.subscribe((lmuData) => {
+      this._removeAllMarkers('lmu');
       lmuData.forEach((lmuBib) => {
         const popUp = popup().setContent(
           '<div style="width: 16rem; display: block"><div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: -0.5rem;margin-top: -0.5rem;"><h3 style="width: 13rem;">' +
@@ -66,16 +65,19 @@ export class MapComponent extends Destroyable implements OnInit {
         );
 
         if (this.map) {
-          marker([lmuBib.lat, lmuBib.lng + 0.0022], {
-            icon: this.applyIcon(lmuBib.status, lmuBib.color),
-          })
-            .addTo(this.map)
-            .bindPopup(popUp);
+          this._lmuMapMarkers.push(
+            marker([lmuBib.lat, lmuBib.lng + 0.0022], {
+              icon: this.applyIcon(lmuBib.status, lmuBib.color),
+            })
+              .addTo(this.map)
+              .bindPopup(popUp)
+          );
         }
-      })
-    );
+      });
+    });
 
-    this.tumData$.asObservable().subscribe((tumData) =>
+    this.tumData$.subscribe((tumData) => {
+      this._removeAllMarkers('tum');
       tumData.forEach((tumBib) => {
         const popUp = popup().setContent(
           '<div style="width: 16rem; display: block"><div style="display: flex;justify-content: space-between;align-items: center;margin-bottom: -0.5rem;margin-top: -0.5rem;"><h3 style="width: 13rem;">' +
@@ -89,14 +91,28 @@ export class MapComponent extends Destroyable implements OnInit {
             '</div> </div> </div>'
         );
         if (this.map) {
-          marker([tumBib.lat, tumBib.lng + 0.002], {
-            icon: this.applyIcon(tumBib.status, tumBib.color),
-          })
-            .addTo(this.map)
-            .bindPopup(popUp);
+          this._tumMapMarkers.push(
+            marker([tumBib.lat, tumBib.lng + 0.002], {
+              icon: this.applyIcon(tumBib.status, tumBib.color),
+            })
+              .addTo(this.map)
+              .bindPopup(popUp)
+          );
         }
-      })
-    );
+      });
+    });
+  }
+
+  private _removeAllMarkers(bib: string) {
+    if (bib === 'lmu') {
+      for (let i = 0; i < this._lmuMapMarkers.length; i++) {
+        this.map?.removeLayer(this._lmuMapMarkers[i]);
+      }
+    } else {
+      for (let i = 0; i < this._tumMapMarkers.length; i++) {
+        this.map?.removeLayer(this._tumMapMarkers[i]);
+      }
+    }
   }
 
   onMapReady(map: Map) {

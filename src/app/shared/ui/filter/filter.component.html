@@ -10,6 +10,7 @@
         class="filter-button"
         [form]="filterForm"
         [label]="'Search'"
+        (click)="submitFilter()"
       ></app-button>
     </div>
 
@@ -38,7 +39,7 @@
         ></app-checkbox>
         <app-checkbox
           name="filterCheckBoxValues"
-          value="innenstadt"
+          value="innerCity"
           label="Innenstadt"
           [control]="filterForm.controls.checkBoxValues"
         ></app-checkbox>
@@ -46,6 +47,12 @@
           name="filterCheckBoxValues"
           value="großhadern"
           label="Großhadern"
+          [control]="filterForm.controls.checkBoxValues"
+        ></app-checkbox>
+        <app-checkbox
+          name="filterCheckBoxValues"
+          value="open"
+          label="Geöffnet"
           [control]="filterForm.controls.checkBoxValues"
         ></app-checkbox>
       </div>

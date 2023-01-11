@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Destroyable } from 'src/app/shared/classes/destroyable';
-import {
-  BibData,
-  BibDataService,
-} from 'src/app/shared/services/bib-data.service';
+import { BibDataService } from 'src/app/shared/services/bib-data.service';
+import { FilterService } from 'src/app/shared/services/filter.service';
 
 @Component({
   selector: 'app-main-page',
@@ -13,25 +10,24 @@ import {
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent extends Destroyable implements OnInit {
-  public tumData$: BehaviorSubject<BibData[]> = new BehaviorSubject<BibData[]>(
-    []
-  );
-  public lmuData$: BehaviorSubject<BibData[]> = new BehaviorSubject<BibData[]>(
-    []
-  );
-  constructor(private _bibDataService: BibDataService) {
+  constructor(
+    private _bibDataService: BibDataService,
+    private _filterService: FilterService
+  ) {
     super();
   }
 
-  ngOnInit(): void {
+  public tumData$ = this._filterService.filteredTumData$;
+  public lmuData$ = this._filterService.filteredLmuData$;
+
+  public ngOnInit(): void {
     this._bibDataService
       .getTumData()
       .pipe(takeUntil(this._destroy))
-      .subscribe((tum) => this.tumData$.next(tum));
-
+      .subscribe(() => this._filterService.resetBibData());
     this._bibDataService
       .getLmuData()
       .pipe(takeUntil(this._destroy))
-      .subscribe((lmu) => this.lmuData$.next(lmu));
+      .subscribe(() => this._filterService.resetBibData());
   }
 }

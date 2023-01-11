@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { BibData } from 'src/app/shared/services/bib-data.service';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list[tumData][lmuData]',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  @Input() tumData$!: BehaviorSubject<BibData[]>;
-  @Input() lmuData$!: BehaviorSubject<BibData[]>;
+  @Input() tumData!: BibData[] | null;
+  @Input() lmuData!: BibData[] | null;
 }

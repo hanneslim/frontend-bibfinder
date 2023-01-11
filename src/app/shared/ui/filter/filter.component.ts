@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { FilterService } from '../../services/filter.service';
 
 type FilterFormType = FormGroup<{
   searchText: FormControl<string>;
@@ -14,12 +15,15 @@ type FilterFormType = FormGroup<{
 export class FilterComponent {
   public filterForm: FilterFormType = this._fb.group({
     searchText: this._fb.control<string>(''),
-    checkBoxValues: this._fb.control<string[]>([]),
+    checkBoxValues: this._fb.control<string[]>(['lmu', 'tum']),
   });
 
-  constructor(private _fb: NonNullableFormBuilder) {
-    this.filterForm.controls.checkBoxValues.valueChanges.subscribe((val) =>
-      console.log(val)
-    );
+  constructor(
+    private _fb: NonNullableFormBuilder,
+    private _filterService: FilterService
+  ) {}
+
+  public submitFilter() {
+    this._filterService.applyFilterValues(this.filterForm.getRawValue());
   }
 }
