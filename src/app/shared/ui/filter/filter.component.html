@@ -5,18 +5,20 @@
         class="search-input"
         [control]="filterForm.controls.searchText"
       ></app-text-input>
-      <div class="clear-text">Clear</div>
+      <div class="clear-text" (click)="clearSearch()">
+        {{ "clear" | translation }}
+      </div>
       <app-button
         class="filter-button"
         [form]="filterForm"
-        [label]="'Search'"
+        [label]="'search' | translation"
         (click)="submitFilter()"
       ></app-button>
     </div>
 
     <hr class="filter-line" />
     <div class="flex align-items-center" style="height: 2.5rem">
-      <div style="padding-right: 1rem">Filters:</div>
+      <div style="padding-right: 1rem">{{ "filters" | translation }}:</div>
       <div class="text filter-checkbox">
         <app-checkbox
           name="filterCheckBoxValues"
@@ -40,7 +42,7 @@
         <app-checkbox
           name="filterCheckBoxValues"
           value="innerCity"
-          label="Innenstadt"
+          label="{{ 'innerCity' | translation }}"
           [control]="filterForm.controls.checkBoxValues"
         ></app-checkbox>
         <app-checkbox
@@ -52,11 +54,13 @@
         <app-checkbox
           name="filterCheckBoxValues"
           value="open"
-          label="Geöffnet"
+          label="{{ 'open' | translation }}"
           [control]="filterForm.controls.checkBoxValues"
         ></app-checkbox>
       </div>
-      <div class="clear-all">Clear All</div>
+      <div class="clear-all" (click)="clearAll()">
+        {{ "clearAll" | translation }}
+      </div>
     </div>
   </div>
 </div>

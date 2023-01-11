@@ -23,6 +23,16 @@ export class FilterComponent {
     private _filterService: FilterService
   ) {}
 
+  public clearSearch() {
+    this.filterForm.controls.searchText.reset();
+    this.submitFilter();
+  }
+
+  public clearAll() {
+    this.filterForm.reset();
+    this.submitFilter();
+  }
+
   public submitFilter() {
     this._filterService.applyFilterValues(this.filterForm.getRawValue());
   }

@@ -23,4 +23,24 @@ export const clientTranslations = {
     ger: 'Alle Bibliotheken auf einen Blick',
     eng: 'Occupation rate of all libraries',
   },
+  innerCity: {
+    ger: 'Innenstadt',
+    eng: 'Downtown',
+  },
+  search: {
+    ger: 'Suche',
+    eng: 'Search',
+  },
+  filters: {
+    ger: 'Filter',
+    eng: 'Filters',
+  },
+  clear: {
+    ger: 'Löschen',
+    eng: 'Clear',
+  },
+  clearAll: {
+    ger: 'Alles zurücksetzen',
+    eng: 'Clear All',
+  },
 };
