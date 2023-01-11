@@ -20,37 +20,43 @@
     <div class="flex align-items-center" style="height: 2.5rem">
       <div style="padding-right: 1rem">{{ "filters" | translation }}:</div>
       <div class="text filter-checkbox">
-        <app-checkbox
-          name="filterCheckBoxValues"
-          value="tum"
-          label="TUM"
-          [control]="filterForm.controls.checkBoxValues"
-        >
-        </app-checkbox>
-        <app-checkbox
-          name="filterCheckBoxValues"
-          value="lmu"
-          label="LMU"
-          [control]="filterForm.controls.checkBoxValues"
-        ></app-checkbox>
-        <app-checkbox
-          name="filterCheckBoxValues"
-          value="garching"
-          label="Garching"
-          [control]="filterForm.controls.checkBoxValues"
-        ></app-checkbox>
-        <app-checkbox
-          name="filterCheckBoxValues"
-          value="innerCity"
-          label="{{ 'innerCity' | translation }}"
-          [control]="filterForm.controls.checkBoxValues"
-        ></app-checkbox>
-        <app-checkbox
-          name="filterCheckBoxValues"
-          value="großhadern"
-          label="Großhadern"
-          [control]="filterForm.controls.checkBoxValues"
-        ></app-checkbox>
+        <div class="universities">
+          <app-checkbox
+            name="filterCheckBoxValues"
+            value="tum"
+            label="TUM"
+            [control]="filterForm.controls.checkBoxValues"
+          >
+          </app-checkbox>
+          <app-checkbox
+            name="filterCheckBoxValues"
+            value="lmu"
+            label="LMU"
+            [control]="filterForm.controls.checkBoxValues"
+          ></app-checkbox>
+        </div>
+
+        <div class="location">
+          <app-checkbox
+            name="filterCheckBoxValues"
+            value="garching"
+            label="Garching"
+            [control]="filterForm.controls.checkBoxValues"
+          ></app-checkbox>
+          <app-checkbox
+            name="filterCheckBoxValues"
+            value="innerCity"
+            label="{{ 'innerCity' | translation }}"
+            [control]="filterForm.controls.checkBoxValues"
+          ></app-checkbox>
+          <app-checkbox
+            name="filterCheckBoxValues"
+            value="großhadern"
+            label="Großhadern"
+            [control]="filterForm.controls.checkBoxValues"
+          ></app-checkbox>
+        </div>
+
         <app-checkbox
           name="filterCheckBoxValues"
           value="open"

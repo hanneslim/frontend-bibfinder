@@ -82,3 +82,32 @@
   text-align: end;
   color: #4fba1c;
 }
+
+.location {
+  display: flex;
+  gap: 1rem;
+}
+
+.universities {
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .filter-container {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .location {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .universities {
+    display: none;
+  }
+}
