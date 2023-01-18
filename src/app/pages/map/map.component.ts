@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, inject } from '@angular/core';
 import {
   icon,
   latLng,
@@ -11,8 +11,10 @@ import {
   ZoomAnimEvent,
 } from 'leaflet';
 import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Destroyable } from 'src/app/shared/classes/destroyable';
 import { BibData } from 'src/app/shared/services/bib-data.service';
+import { FilterService } from 'src/app/shared/services/filter.service';
 import {
   TranslationKey,
   TranslationService,
@@ -26,6 +28,8 @@ import {
 export class MapComponent extends Destroyable implements OnInit {
   @Input() tumData$!: Observable<BibData[]>;
   @Input() lmuData$!: Observable<BibData[]>;
+
+  private _filterService = inject(FilterService);
 
   public map$: EventEmitter<Map> = new EventEmitter();
   public zoom$: EventEmitter<number> = new EventEmitter();
@@ -104,11 +108,11 @@ export class MapComponent extends Destroyable implements OnInit {
   }
 
   private _removeAllMarkers(bib: string) {
-    if (bib === 'lmu') {
+    if (bib === 'lmu' && this._lmuMapMarkers.length) {
       for (let i = 0; i < this._lmuMapMarkers.length; i++) {
         this.map?.removeLayer(this._lmuMapMarkers[i]);
       }
-    } else {
+    } else if (bib === 'tum' && this._tumMapMarkers.length) {
       for (let i = 0; i < this._tumMapMarkers.length; i++) {
         this.map?.removeLayer(this._tumMapMarkers[i]);
       }
@@ -117,6 +121,7 @@ export class MapComponent extends Destroyable implements OnInit {
 
   onMapReady(map: Map) {
     this.map = map;
+    this._setZoomAndCenter();
     this.map$.emit(map);
     this.zoom = map.getZoom();
     this.zoom$.emit(this.zoom);
@@ -175,5 +180,33 @@ export class MapComponent extends Destroyable implements OnInit {
       }
     }
     return returnIcon;
+  }
+
+  private _setZoomAndCenter() {
+    this._filterService.appliedFilter$
+      .pipe(takeUntil(this._destroy))
+      .subscribe((appliedFilter) => {
+        if (
+          appliedFilter.checkBoxValues.includes('garching') &&
+          !appliedFilter.checkBoxValues.includes('großhadern') &&
+          !appliedFilter.checkBoxValues.includes('innerCity')
+        ) {
+          this.map?.setView(latLng(48.2658819, 11.6716125), 15);
+        } else if (
+          !appliedFilter.checkBoxValues.includes('garching') &&
+          appliedFilter.checkBoxValues.includes('großhadern') &&
+          !appliedFilter.checkBoxValues.includes('innerCity')
+        ) {
+          this.map?.setView(latLng(48.111183, 11.463665), 15);
+        } else if (
+          !appliedFilter.checkBoxValues.includes('großhadern') &&
+          !appliedFilter.checkBoxValues.includes('garching') &&
+          appliedFilter.checkBoxValues.includes('innerCity')
+        ) {
+          this.map?.setView(latLng(48.15, 11.57), 14);
+        } else {
+          this.map?.setView(latLng(48.19, 11.57), 11);
+        }
+      });
   }
 }

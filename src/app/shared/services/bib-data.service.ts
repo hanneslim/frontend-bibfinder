@@ -11,7 +11,7 @@ export type BibData = {
   gmapslink: string;
   occupationPercentage: string | number;
   university: string;
-  innerCity: boolean;
+  location: string;
   lat: number;
   lng: number;
 };
