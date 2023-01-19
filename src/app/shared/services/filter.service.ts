@@ -106,7 +106,7 @@ export class FilterService {
     finalLmuData: BibData[]
   ) {
     if (
-      appliedFilter.checkBoxValues.includes('innenstadt') ||
+      appliedFilter.checkBoxValues.includes('innerCity') ||
       appliedFilter.checkBoxValues.includes('garching') ||
       appliedFilter.checkBoxValues.includes('großhadern')
     ) {
