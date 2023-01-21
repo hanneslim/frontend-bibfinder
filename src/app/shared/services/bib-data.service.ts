@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
+import { LoadingService } from './loading.service';
 
 export type BibData = {
   name: string;
@@ -20,7 +21,10 @@ export type BibData = {
   providedIn: 'root',
 })
 export class BibDataService {
-  constructor(private _http: HttpClient) {}
+  constructor(
+    private _http: HttpClient,
+    private _loadingService: LoadingService
+  ) {}
 
   public tumData: BibData[] = [];
   public lmuData: BibData[] = [];
@@ -31,7 +35,9 @@ export class BibDataService {
       .pipe(
         tap((tum) => {
           this.tumData = tum;
-        })
+          this._loadingService.isLoading.next(true);
+        }),
+        finalize(() => this._loadingService.isLoading.next(false))
       );
   }
 

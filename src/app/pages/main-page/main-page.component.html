@@ -1,10 +1,14 @@
-<app-list-map-switch
-  *ngIf="{ tumData: tumData$ | async, lmuData: lmuData$ | async } as vm"
->
-  <div list>
-    <app-list [tumData]="vm.tumData" [lmuData]="vm.lmuData"></app-list>
-  </div>
-  <div map>
-    <app-map [tumData$]="tumData$" [lmuData$]="lmuData$"></app-map>
-  </div>
-</app-list-map-switch>
+<ng-container>
+  <app-loading></app-loading>
+
+  <app-list-map-switch
+    *ngIf="{ tumData: tumData$ | async, lmuData: lmuData$ | async } as vm"
+  >
+    <div list>
+      <app-list [tumData]="vm.tumData" [lmuData]="vm.lmuData"></app-list>
+    </div>
+    <div map>
+      <app-map [tumData$]="tumData$" [lmuData$]="lmuData$"></app-map>
+    </div>
+  </app-list-map-switch>
+</ng-container>

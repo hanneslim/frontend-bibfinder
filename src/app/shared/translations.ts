@@ -43,4 +43,12 @@ export const clientTranslations = {
     ger: 'Alles zurücksetzen',
     eng: 'Clear All',
   },
+  libraryDataUpdates: {
+    ger: 'Bibliotheksdaten werden aktualisiert...',
+    eng: 'Library data gets updated...',
+  },
+  occupancyGetsDisplayed: {
+    ger: 'Auslastung wird jetzt angezeigt...',
+    eng: 'Occupancy gets now displayed...',
+  },
 };

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { takeUntil } from 'rxjs/operators';
+import { finalize, takeUntil } from 'rxjs/operators';
 import { Destroyable } from 'src/app/shared/classes/destroyable';
 import { BibDataService } from 'src/app/shared/services/bib-data.service';
 import { FilterService } from 'src/app/shared/services/filter.service';
