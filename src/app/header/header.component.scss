@@ -4,20 +4,21 @@
   position: fixed;
   background-color: white;
   top: 0;
-  height: 3.875rem;
+  height: 3.1rem;
 }
 
 .header-logo {
   margin-left: 3rem;
-  font-size: x-large;
-  margin-top: 1rem;
+  font-size: large;
+  display: flex;
+  align-items: center;
   font-weight: 600;
 }
 
 .image-banner {
   background-image: url("../../assets/alternative-bib-background.jpg");
   background-size: cover;
-  height: 16rem;
+  height: 12rem;
 }
 
 .language-switch {

@@ -21,7 +21,10 @@ export class BibListElementComponent {
   }
 
   private _useLmuData() {
-    this.percentage = this.bibData.occupationPercentage + '%';
+    this.percentage =
+      this.bibData.occupationPercentage === 0
+        ? '1%'
+        : this.bibData.occupationPercentage + '%';
   }
 
   private _useTumData(occRate: string) {
@@ -33,6 +36,10 @@ export class BibListElementComponent {
       this.percentage = '60%';
     } else if (occRate.includes('mehr als 75')) {
       this.percentage = '85%';
+    } else if (occRate.includes('vollständig')) {
+      this.percentage = '100%';
+    } else {
+      this.percentage = '1%';
     }
   }
 }

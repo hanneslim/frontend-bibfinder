@@ -61,7 +61,9 @@ export class MapComponent extends Destroyable implements OnInit {
             lmuBib.name +
             ' </h3><a href="' +
             lmuBib.gmapslink +
-            '" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="display: flex; gap: 0.25rem"><div style="color:#1a73e8">' +
+            '" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="font-size:smaller">' +
+            lmuBib.hours +
+            '</div><div style="display: flex; gap: 0.25rem"><div style="color:#1a73e8">' +
             TranslationService.get(lmuBib.status as TranslationKey) +
             '</div> <div>-</div> <div>' +
             lmuBib.street +
@@ -88,7 +90,9 @@ export class MapComponent extends Destroyable implements OnInit {
             tumBib.name +
             ' </h3><a href="' +
             tumBib.gmapslink +
-            '" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="display: flex; gap: 0.25rem"><div style="color:#1a73e8">' +
+            '" target="_blank"> <img class="map-icon" style="height: 2rem;padding-right: 0.5rem; cursor:pointer" src="../../../assets/map-markers/direction-icon.svg"/></a></div><div style="font-size:smaller">' +
+            tumBib.hours +
+            '</div><div style="display: flex; gap: 0.25rem"><div style="color:#1a73e8">' +
             TranslationService.get(tumBib.status as TranslationKey) +
             '</div> <div>-</div> <div>' +
             tumBib.street +

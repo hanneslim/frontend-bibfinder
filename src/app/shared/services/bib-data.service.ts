@@ -11,6 +11,7 @@ export type BibData = {
   street: string;
   gmapslink: string;
   occupationPercentage: string | number;
+  hours: string;
   university: string;
   location: string;
   lat: number;
@@ -37,7 +38,9 @@ export class BibDataService {
           this.tumData = tum;
           this._loadingService.isLoading.next(true);
         }),
-        finalize(() => this._loadingService.isLoading.next(false))
+        finalize(() => {
+          this._loadingService.isLoading.next(false);
+        })
       );
   }
 
