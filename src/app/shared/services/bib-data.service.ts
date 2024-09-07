@@ -32,7 +32,7 @@ export class BibDataService {
 
   public getTumData(): Observable<BibData[]> {
     return this._http
-      .get<BibData[]>('https://cute-blazer-crow.cyclic.app/tum-data')
+      .get<BibData[]>('https://backend-bibfinder.vercel.app/tum-data')
       .pipe(
         tap((tum) => {
           this.tumData = tum;
@@ -46,7 +46,7 @@ export class BibDataService {
 
   public getLmuData(): Observable<BibData[]> {
     return this._http
-      .get<BibData[]>('https://cute-blazer-crow.cyclic.app/lmu-data')
+      .get<BibData[]>('https://backend-bibfinder.vercel.app/lmu-data')
       .pipe(
         tap((lmu) => {
           this.lmuData = lmu;
