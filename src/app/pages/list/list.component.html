@@ -1,12 +1,18 @@
 <div>
   <app-bib-list-header *ngIf="lmuData?.length" [headerText]="'LMU'">
     <div *ngFor="let bib of lmuData">
-      <app-bib-list-element [bibData]="bib"></app-bib-list-element>
+      <app-bib-list-element
+        [ngClass]="{ 'opacity-closed': bib.status === 'closed' }"
+        [bibData]="bib"
+      ></app-bib-list-element>
     </div>
   </app-bib-list-header>
   <app-bib-list-header *ngIf="tumData?.length" [headerText]="'TUM'">
     <div *ngFor="let bib of tumData">
-      <app-bib-list-element [bibData]="bib"></app-bib-list-element>
+      <app-bib-list-element
+        [ngClass]="{ 'opacity-closed': bib.status === 'closed' }"
+        [bibData]="bib"
+      ></app-bib-list-element>
     </div>
   </app-bib-list-header>
 </div>
